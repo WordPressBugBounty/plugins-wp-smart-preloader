@@ -286,8 +286,5 @@ class WP_smart_preloader{
 
 }
 
-
-
-// if( is_admin() ){
     $wp_smart_preloader = new WP_smart_preloader();
-// }
+

@@ -1,26 +1,27 @@
 (function($){
 	
 	var bdy = jQuery("body:not('.elementor-editor-active')");
-var value = wsp_obj.loader,		
-duration = ( wsp_obj.hasOwnProperty('fadeout') && wsp_obj.fadeout!="" )?wsp_obj.fadeout:2500,
-delay = ( wsp_obj.hasOwnProperty('delay') && wsp_obj.delay!="" )?wsp_obj.delay:1500;
+	var value = wsp_obj.loader,		
+	duration = ( wsp_obj.hasOwnProperty('fadeout') && wsp_obj.fadeout!="" )?wsp_obj.fadeout:2500,
+	delay = ( wsp_obj.hasOwnProperty('delay') && wsp_obj.delay!="" )?wsp_obj.delay:1500;
 
-jQuery(document).ready(function() {
-		var flag;
-		if( wsp_obj.hasOwnProperty("homepage") && ( "1" == wsp_obj.homepage ) ){
-			if (jQuery('body:not(".elementor-editor-active")').hasClass('home') ){
-				add_block_after_body();
-				flag = "home";
-			}
-		} else {
-				add_block_after_body();
-		}	
+    // Determine if preloader should appear only on the homepage
+    if (wsp_obj.homepage === "1" && $body.hasClass('home')) {
+        add_block_after_body();
+    } else if (!wsp_obj.homepage) {
+        add_block_after_body();
+    }
+
+	function add_block_after_body() {
+		if (!$('.smart-page-loader').length) {
+			$('body:not(".elementor-editor-active")').prepend('<div class="smart-page-loader"></div>');
+			$('body:not(".elementor-editor-active")').removeClass('wp-smart-body');
+		}
+	}
 		
 	setTimeout(wsp_front_loader(),1000);
 
 	function wsp_front_loader() {
-		
-		
 		var block = '';
 		if( value != "" ){
 			switch (value){
@@ -46,36 +47,34 @@ jQuery(document).ready(function() {
 					block += wsp_obj.custom_animation;
 					break;
 			}
-			
-		
 				
-			if( "home" == flag ){
-				jQuery('body.home:not(".elementor-editor-active") .smart-page-loader').prepend(block);
-			}else {
+			if( wsp_obj.homepage === "1"){
+				if ($('body.home:not(".elementor-editor-active")').length) {
+					$('body.home:not(".elementor-editor-active") .smart-page-loader').prepend(block);
+				}				
+			} else {
 				// all pages
 				jQuery('.smart-page-loader').prepend(block);
 			}	
 
 		}
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
 	}
 
-	function add_block_after_body(){
-		jQuery('body:not(".elementor-editor-active")').prepend('<div class="smart-page-loader"></div>');
-		jQuery('body:not(".elementor-editor-active")').removeClass('wp-smart-body');		
+	window.onload = function() {
+		add_block_after_body();
+		wsp_front_loader();
+		setTimeout(function() {
+			fade_away();
+		}, delay);
+	};
+
+	function fade_away() {
+		$('.smart-page-loader').fadeOut(duration, function() {
+			$('body:not(".elementor-editor-active")').removeClass('wp-smart-body');
+			$('.smart-page-loader').removeClass('loading-animation');
+		});
 	}
-
-	
-});
-
-window.addEventListener('load',function(event){	
-	fade_away();	
-	function fade_away(){
-		jQuery('.smart-page-loader').delay(delay).fadeOut(duration);
-		jQuery('body:not(".elementor-editor-active")').removeClass('wp-smart-body');
-	}	
-});
-
 	
 }(jQuery));
 

@@ -3,7 +3,7 @@
 Plugin Name: WP Smart Preloader
 Plugin URI: https://wordpress.org/plugins/wp-smart-preloader
 Description: WP Smart Preloader is a Simple CSS spinners and throbbers made with CSS and minimal HTML markup.
-Version: 1.15.2
+Version: 1.15.3
 Author: catchsquare
 Author URI: http://catchsquare.com
 License: GPLv2 or later
@@ -18,7 +18,7 @@ if ( !function_exists( 'add_action' ) ) {
 }
 
 /*Define Constants for this plugin*/
-define( 'SMART_PRELOADER_VERSION', '1.15.2' );
+define( 'SMART_PRELOADER_VERSION', '1.15.3' );
 define( 'SMART_PRELOADER_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SMART_PRELOADER_URL', plugin_dir_url( __FILE__ ) );
 

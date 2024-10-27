@@ -2,8 +2,8 @@
 Contributors: catchsquare, ashokmhrj, subedimadhu
 Tags: WP Smart Preloader, Site preloader, Wordpress Preloader,posts, preload, preloader, responsive, plugin, preloader
 Requires at least: 2.8
-Tested up to: 6.4
-Stable tag: 1.15.2
+Tested up to: 6.6
+Stable tag: 1.15.3
 Donate link:https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=contact%40catchsquare%2ecom&lc=US&item_name=WP%20smart%20preloader&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHostedGuest
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -58,6 +58,8 @@ Please use support forum or you can directly mail us at
 
 
 == Changelog ==
+= 1.15.2 =
+frontend script
 
 = 1.15.2 =
 just changed version ;)
